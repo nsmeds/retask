@@ -16,9 +16,15 @@ class App extends Component {
                     id: 1,
                     title: 'Make Dinner',
                     completed: false
+                },
+                {
+                    id: 2,
+                    title: 'Hang Out',
+                    completed: false
                 }
             ],
-            handleInputChange: this.handleInputChange
+            handleInputChange: this.handleInputChange,
+            deleteTodo: this.deleteTodo,
         }
     }
 
@@ -29,10 +35,22 @@ class App extends Component {
         const name = target.name;
         const id = target.id;
         const todos = this.state.todos;
+        console.log('todos from handleInputChange', todos);
         todos[id][name] = value;
         
         this.setState({
             todos
+        })
+    }
+
+    deleteTodo = event => {
+        const target = event.target;
+        const id = target.id;
+        console.log('id', id);
+        const newTodos = this.state.todos;
+        newTodos.splice(id, 1);
+        this.setState({
+            todos: newTodos
         })
     }
 
