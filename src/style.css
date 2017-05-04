@@ -3,3 +3,17 @@ body {
     padding: 0;
     font-family: sans-serif;
 }
+
+li {
+    list-style: none;
+}
+
+label span {
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+input {
+    margin-left: 0.5em;
+}
