@@ -10,25 +10,29 @@ class App extends Component {
                 {
                     id: 0,
                     title: 'Take Out The Trash',
-                    completed: true
+                    completed: false
                 },
                 {
                     id: 1,
                     title: 'Make Dinner',
-                    completed: true
+                    completed: false
                 }
             ],
             handleInputChange: this.handleInputChange
         }
-        
     }
 
+
     handleInputChange = event => {
-        let target = event.target;
-        let value = target.value;
-        let name = target.name;
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        const id = target.id;
+        const todos = this.state.todos;
+        todos[id][name] = value;
+        
         this.setState({
-            [name]: value
+            todos
         })
     }
 
