@@ -3,13 +3,16 @@ import Todos from './components/Todos';
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             todos: [],
             handleInputChange: this.handleInputChange,
             deleteTodo: this.deleteTodo,
             addTodo: this.addTodo,
+            toggleTodos: this.toggleTodos,
+            showComplete: true,
+            showIncomplete: true
         };
         this.initialId = Math.floor(Math.random()*900000) + 100000;
     }
@@ -49,6 +52,17 @@ class App extends Component {
         newTodos.splice(id, 1);
         this.setState({
             todos: newTodos
+        })
+    }
+
+    toggleTodos = event => {
+        const target = event.target;
+        console.log('target', target);
+        const name = target.name;
+        console.log('name', name);
+        const value = target.checked;
+        this.setState({
+            [name]: value
         })
     }
 
