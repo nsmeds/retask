@@ -10,7 +10,7 @@ const Todos = props => {
             <li key={index}>
                 <label>
                     <span>{index + 1}</span>
-                    <input key={todo.id} id={todo.id} name="title" value={todo.title} onChange={props.handleInputChange} />
+                    <input autoFocus placeholder="New Todo" key={todo.id} id={todo.id} name="title" value={todo.title} onChange={props.handleInputChange} />
                     <input type="checkbox" id={index} name="completed" value={todo.completed} onChange={props.handleInputChange} />
                     <span>{todo.completed ? 'Completed' : 'Incomplete'}</span>
                     <button id={index} onClick={props.deleteTodo}>Delete</button>
@@ -20,9 +20,12 @@ const Todos = props => {
     })
 
     return (
-        <ul>
-            {allTodos}
-        </ul>
+        <div>
+            <ul>
+                {allTodos}
+            </ul>
+            <button onClick={props.addTodo}>Add New</button>
+        </div>
     )
 }
 
