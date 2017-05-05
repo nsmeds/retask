@@ -10,17 +10,17 @@ class App extends Component {
             handleInputChange: this.handleInputChange,
             deleteTodo: this.deleteTodo,
             addTodo: this.addTodo,
-        }
+        };
+        this.initialId = Math.floor(Math.random()*900000) + 100000;
     }
 
     handleInputChange = event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        const id = target.id;
+        const index = target.id;
         const todos = this.state.todos;
-        console.log('todos from handleInputChange', todos);
-        todos[id][name] = value;
+        todos[index][name] = value;
         
         this.setState({
             todos
@@ -29,8 +29,9 @@ class App extends Component {
 
     addTodo = event => {
         const todos = this.state.todos;
+        console.log(this.initialId);
         const newTodo = {
-            id: todos.length,
+            id: this.initialId++,
             title: '',
             completed: false
         }
