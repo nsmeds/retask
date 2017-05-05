@@ -6,28 +6,12 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todos: [
-                {
-                    id: 0,
-                    title: 'Take Out The Trash',
-                    completed: false
-                },
-                {
-                    id: 1,
-                    title: 'Make Dinner',
-                    completed: false
-                },
-                {
-                    id: 2,
-                    title: 'Hang Out',
-                    completed: false
-                }
-            ],
+            todos: [],
             handleInputChange: this.handleInputChange,
             deleteTodo: this.deleteTodo,
+            addTodo: this.addTodo,
         }
     }
-
 
     handleInputChange = event => {
         const target = event.target;
@@ -41,6 +25,19 @@ class App extends Component {
         this.setState({
             todos
         })
+    }
+
+    addTodo = event => {
+        const todos = this.state.todos;
+        const newTodo = {
+            id: todos.length,
+            title: '',
+            completed: false
+        }
+        todos.push(newTodo);
+        this.setState({
+            todos: todos
+        });
     }
 
     deleteTodo = event => {
