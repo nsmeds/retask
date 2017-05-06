@@ -3,34 +3,45 @@ import Todos from './components/Todos';
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             todos: [],
             handleInputChange: this.handleInputChange,
             deleteTodo: this.deleteTodo,
             addTodo: this.addTodo,
-        }
+            toggleTodos: this.toggleTodos,
+            showComplete: true,
+            showIncomplete: true
+        };
+        this.initialId = Math.floor(Math.random()*900000) + 100000;
+    }
+
+    componentDidMount() {
+        let todos = JSON.parse(localStorage.getItem('todos'));
+        this.setState({
+            todos: todos,
+        })
     }
 
     handleInputChange = event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        const id = target.id;
+        const index = target.id;
         const todos = this.state.todos;
-        console.log('todos from handleInputChange', todos);
-        todos[id][name] = value;
-        
+        todos[index][name] = value;
         this.setState({
             todos
         })
+        localStorage.setItem('todos', JSON.stringify(todos));
     }
 
     addTodo = event => {
         const todos = this.state.todos;
+        // console.log(this.initialId);
         const newTodo = {
-            id: todos.length,
+            id: this.initialId++,
             title: '',
             completed: false
         }
@@ -38,16 +49,29 @@ class App extends Component {
         this.setState({
             todos: todos
         });
+        localStorage.setItem('todos', JSON.stringify(todos));
     }
 
     deleteTodo = event => {
         const target = event.target;
         const id = target.id;
-        console.log('id', id);
-        const newTodos = this.state.todos;
-        newTodos.splice(id, 1);
+        // console.log('id', id);
+        const todos = this.state.todos;
+        todos.splice(id, 1);
         this.setState({
-            todos: newTodos
+            todos: todos
+        })
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
+
+    toggleTodos = event => {
+        const target = event.target;
+        // console.log('target', target);
+        const name = target.name;
+        // console.log('name', name);
+        const value = target.checked;
+        this.setState({
+            [name]: value
         })
     }
 
