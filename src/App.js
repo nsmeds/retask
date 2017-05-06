@@ -17,6 +17,13 @@ class App extends Component {
         this.initialId = Math.floor(Math.random()*900000) + 100000;
     }
 
+    componentDidMount() {
+        let todos = JSON.parse(localStorage.getItem('todos'));
+        this.setState({
+            todos: todos,
+        })
+    }
+
     handleInputChange = event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -24,10 +31,10 @@ class App extends Component {
         const index = target.id;
         const todos = this.state.todos;
         todos[index][name] = value;
-        
         this.setState({
             todos
         })
+        localStorage.setItem('todos', JSON.stringify(todos));
     }
 
     addTodo = event => {
@@ -42,17 +49,19 @@ class App extends Component {
         this.setState({
             todos: todos
         });
+        localStorage.setItem('todos', JSON.stringify(todos));
     }
 
     deleteTodo = event => {
         const target = event.target;
         const id = target.id;
         // console.log('id', id);
-        const newTodos = this.state.todos;
-        newTodos.splice(id, 1);
+        const todos = this.state.todos;
+        todos.splice(id, 1);
         this.setState({
-            todos: newTodos
+            todos: todos
         })
+        localStorage.setItem('todos', JSON.stringify(todos));
     }
 
     toggleTodos = event => {

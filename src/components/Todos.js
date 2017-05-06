@@ -5,8 +5,8 @@ const Todos = props => {
 
     // console.log('props from todos', props);
 
-    const completedTodos = props.todos.filter(todo => todo.completed);
-    const incompleteTodos = props.todos.filter(todo => !todo.completed);
+    // const completedTodos = props.todos.filter(todo => todo.completed);
+    // const incompleteTodos = props.todos.filter(todo => !todo.completed);
     let allTodos = [];
     if (props.showComplete && props.showIncomplete) {
         allTodos = props.todos;
