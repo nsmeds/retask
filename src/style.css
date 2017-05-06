@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body {
     margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+    padding: 1em;
+    font-family: 'Lato', sans-serif;
 }
 
 .App {
@@ -21,14 +23,18 @@ h1, h2 {
 }
 
 .listContainer {
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
 .todoList {
-    text-align: right;
+    /*text-align: right;*/
+    padding: 0;
 }
 
 li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     list-style: none;
     margin: 0.1em auto;
 }
