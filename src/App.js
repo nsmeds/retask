@@ -32,7 +32,7 @@ class App extends Component {
 
     addTodo = event => {
         const todos = this.state.todos;
-        console.log(this.initialId);
+        // console.log(this.initialId);
         const newTodo = {
             id: this.initialId++,
             title: '',
@@ -47,7 +47,7 @@ class App extends Component {
     deleteTodo = event => {
         const target = event.target;
         const id = target.id;
-        console.log('id', id);
+        // console.log('id', id);
         const newTodos = this.state.todos;
         newTodos.splice(id, 1);
         this.setState({
@@ -57,9 +57,9 @@ class App extends Component {
 
     toggleTodos = event => {
         const target = event.target;
-        console.log('target', target);
+        // console.log('target', target);
         const name = target.name;
-        console.log('name', name);
+        // console.log('name', name);
         const value = target.checked;
         this.setState({
             [name]: value
