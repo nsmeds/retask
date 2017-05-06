@@ -35,12 +35,14 @@ const Todos = props => {
 
 
     return (
-        <div>
-            <ul>
+        <div className="listContainer">
+            <div className="optionsBar">
+                <ToggleComplete {... props}/>
+                <button onClick={props.addTodo}>Add New</button>
+            </div>
+            <ul className="todoList">
                 {allTodos}
             </ul>
-            <button onClick={props.addTodo}>Add New</button>
-            <ToggleComplete {... props}/>
         </div>
     )
 }
