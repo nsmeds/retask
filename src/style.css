@@ -84,5 +84,7 @@ button:active {
 /* Misc Styles */
 
 .hidden {
-    display: none;
+    visibility: hidden;
+    width: 0;
+    padding: 0;
 }
