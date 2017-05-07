@@ -4,6 +4,6 @@ A simple to-do application built with React. Users can add, edit and delete item
 
 To install, clone this repo and `cd` into the repo directory. Run `npm install` to install dependencies and `npm start` to start the development server.
 
-A live version of the app is [here] (https://nsmeds.github.io/retask).
+A live version of the app is [here](https://nsmeds.github.io/retask).
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
