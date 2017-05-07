@@ -15,9 +15,7 @@ const Todos = props => {
     } 
 
     allTodos = allTodos.map((todo, index) => {
-
         const enabled = todo.title.length > 0; // disable 'complete/incomplete' checkbox if no text.
-
         return (
             <li key={todo.id}>
                 <label>
