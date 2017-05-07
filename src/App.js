@@ -11,6 +11,7 @@ class App extends Component {
             deleteTodo: this.deleteTodo,
             addTodo: this.addTodo,
             toggleTodos: this.toggleTodos,
+            clearAll: this.clearAll,
             showComplete: true,
             showIncomplete: true
         };
@@ -19,9 +20,11 @@ class App extends Component {
 
     componentDidMount() {
         let todos = JSON.parse(localStorage.getItem('todos'));
-        this.setState({
-            todos: todos,
-        })
+        if (todos) {
+            this.setState({
+                todos: todos,
+            })
+        }
     }
 
     handleInputChange = event => {
@@ -38,8 +41,8 @@ class App extends Component {
     }
 
     addTodo = event => {
+        event.preventDefault();
         const todos = this.state.todos;
-        // console.log(this.initialId);
         const newTodo = {
             id: this.initialId++,
             title: '',
@@ -55,7 +58,6 @@ class App extends Component {
     deleteTodo = event => {
         const target = event.target;
         const id = target.id;
-        // console.log('id', id);
         const todos = this.state.todos;
         todos.splice(id, 1);
         this.setState({
@@ -66,13 +68,19 @@ class App extends Component {
 
     toggleTodos = event => {
         const target = event.target;
-        // console.log('target', target);
         const name = target.name;
-        // console.log('name', name);
         const value = target.checked;
         this.setState({
             [name]: value
         })
+    }
+
+    clearAll = event => {
+        event.preventDefault();
+        this.setState({
+            todos: []
+        });
+        localStorage.removeItem('todos');
     }
 
     render() {
