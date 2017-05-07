@@ -19,9 +19,11 @@ class App extends Component {
 
     componentDidMount() {
         let todos = JSON.parse(localStorage.getItem('todos'));
-        this.setState({
-            todos: todos,
-        })
+        if (todos) {
+            this.setState({
+                todos: todos,
+            })
+        }
     }
 
     handleInputChange = event => {

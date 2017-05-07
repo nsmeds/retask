@@ -2,6 +2,7 @@
   "name": "retask",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "devDependencies": {
     "enzyme": "^2.8.2",
     "react-scripts": "0.9.5",
